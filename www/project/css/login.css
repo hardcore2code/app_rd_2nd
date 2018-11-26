@@ -1,0 +1,32 @@
+.padding{
+    padding: 0px 10px;
+}
+input[type="text"], input[type="password"] {
+    font-size: 16px;
+}
+.button-my {
+    background-color: #494156 !important;
+    font-size: 16px !important;
+}
+.button.button-positive.button-clear {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.list .label-border{
+    border-bottom: solid 1px #dddddd;
+}
+input[type="text"], input[type="password"]{
+    padding-top: 6px;
+    padding-bottom: -6px;
+    width: 70%;
+    height: auto;
+    float: right;
+    line-height: 20px;
+}
+
+
+
+
+
+

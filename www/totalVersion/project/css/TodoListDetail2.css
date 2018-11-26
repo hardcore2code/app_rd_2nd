@@ -1,0 +1,44 @@
+.TodoListDetail2 .alldiv{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.TodoListDetail2 .barmy{
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #e4e5e7;
+    line-height:32px;
+}
+
+.TodoListDetail2 .title{
+    color: #e4e5e7;
+}
+
+.TodoListDetail2 .tab-item-line{
+    height: 1px;
+    background-color: #cac9c9;
+}
+
+.TodoListDetail2 .float-right{
+    float:right;
+}
+
+.TodoListDetail2 .float-left{
+    float:left;
+    padding-left: 10px;
+}
+
+.TodoListDetail2 .clear-left{
+    clear: left;
+}
+
+
+.TodoListDetail2 .sub-detail-line{
+    height: 3px;
+    background-color: #dddddd;
+}
+
+.TodoListDetail2 .buttonMy {
+    background-color:#494156;
+}

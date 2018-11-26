@@ -1,0 +1,22 @@
+<ion-view class="tab-account">
+	<ion-header-bar class="barmy" align-title="center">
+		<h1 class="title">{{$root.const.tab3.header_title}}</h1>
+	</ion-header-bar>
+	<ion-content class="background-color-#eeeeee">
+		<div item="item" class="lk info loginInfoPdg mgnL10px mgnR10px ">
+			<div class="descFont">
+				用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="coreFont">{{userData.userId}}</span>
+			</div>
+			<div class="descFont">
+				所属机关：&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="coreFont">{{userData.orgName}}</span>
+			</div>
+		</div>
+		<div id="bh" class="lk info loginInfoPdg mgnL10px mgnR10px loginOutButton" ng-click="checkAppVersion()">检查版本
+		</div>
+		<div id="bh" class="lk info loginInfoPdg mgnL10px mgnR10px loginOutButton" ng-click="showConfirm()">退出登录
+			<img src="project/res/img/set_11.png" width="18" height="18" class="ftr mt">
+		</div>
+	</ion-content>
+</ion-view>

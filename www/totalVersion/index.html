@@ -1,0 +1,1457 @@
+<!--
+created by woody
+date 20170301
+程序入口页面
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>天津危险废物监管平台APP</title>
+    <link rel="manifest" href="manifest.json">
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+    <link href="project/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="project/css/common.css" rel="stylesheet">
+	<link href="project/css/Tab01.css" rel="stylesheet" type="text/css">
+	<link href="project/css/TodoList.css" rel="stylesheet" type="text/css">
+	<link href="project/css/TodoListDetail.css" rel="stylesheet" type="text/css">
+	<link href="project/css/TodoListDetail2.css" rel="stylesheet" type="text/css">
+	<link href="project/css/Tab01Detail.css" rel="stylesheet" type="text/css">
+	<link href="project/css/Tab02.css" rel="stylesheet" type="text/css">
+	<link href="project/css/Tab02Detail.css" rel="stylesheet" type="text/css">
+	<link href="project/css/Tab03.css" rel="stylesheet" type="text/css">
+	<link href="project/css/Tab03Detail.css" rel="stylesheet" type="text/css">
+	<link href="project/css/query.css" rel="stylesheet" type="text/css">
+	<link href="project/css/dbsPage.css" rel="stylesheet" type="text/css">
+	<link href="project/css/login.css" rel="stylesheet" type="text/css">
+	<link href="project/css/tab-account.css" rel="stylesheet" type="text/css">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="project/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="project/lib/ionic-datepicker/ionic-datepicker.bundle.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="project/lib/ngcordova/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+    <!-- libs js -->
+    <script src="project/lib/angular-local-storage/angular-local-storage.min.js"></script>
+    <script src="project/lib/jquery/jquery.min.js"></script>
+    <!-- your app's js -->
+    <script src="project/js/app.js"></script>
+    <!--<script src="project/js/directives/HideTabs.js"></script>-->
+    <!--<script src="project/js/directives/ShowContext.js"></script>-->
+    <!--<script src="project/js/directives/ShowContextCss.js"></script>-->
+    <script src="project/js/directives/totalDirectives.js"></script>
+    <!--<script src="project/js/services/Init.js"></script>-->
+    <!--<script src="project/js/services/Alert.js"></script>-->
+    <!--<script src="project/js/services/LoginFilter.js"></script>-->
+    <!--<script src="project/js/services/BackUtil.js"></script>-->
+    <!--<script src="project/js/services/LoadUtil.js"></script>-->
+    <script src="project/js/services/totalServices.js"></script>
+    <!--<script src="project/js/controllers/SearchCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/TodoListCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/TodoListDetailCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/TodoListDetail2Ctrl.js"></script>-->
+    <!--<script src="project/js/controllers/loginCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/AccountCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab01Ctrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab01DetailCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab02Ctrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab02DetailCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab03Ctrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/Tab03DetailCtrl.js"></script>-->
+    <!--<script src="project/js/controllers/search_tabs/queryCtrl.js"></script>-->
+    <script src="project/js/controllers/totalControollers.js"></script>
+    <!--<script src="project/js/filters/StringUtil.js"></script>-->
+    <!--<script src="project/js/filters/StyleUtil.js"></script>-->
+    <script src="project/js/filters/totalFilters.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <script type="text/ng-template" id="tab-todoList.html">
+      <ion-view  view-title="{{$root.const.tab2.header_title}}"  class="TodoList">
+        <ion-nav-bar class="bar-my">
+        </ion-nav-bar>
+        <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5" class="paddingTop5px">
+          <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles">
+          </ion-refresher>
+          <ion-list ng-if = "listIsNull == '1' ">
+            <div ng-repeat="item in items" item="item" class="positionRelative">
+              <div class="main lk checkInfocss mgnL10px mgnR10px ofh">
+                <div class="left">
+                  <div>
+                    <div class="descFont ftl detailColOne">
+                      转移计划编号：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.tpId}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="descFont ftl detailColOne">
+                      业务流程名称：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.bizName}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="descFont ftl detailColOne">
+                      单位名称：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.epName}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="descFont ftl detailColOne">
+                      所属环保局：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.btoName}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="descFont ftl detailColOne">
+                      环节名称：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.workItemName}}
+                    </div>
+                  </div>
+                  <div>
+                    <div class="descFont ftl detailColOne crl">
+                      申请时间：
+                    </div>
+                    <div class="coreFont ftr detailWidth70">
+                      {{item.applyDate}}
+                    </div>
+                  </div>
+                </div>
+                <div class="right">
+                  <div class="coreFont ftr detailImg"  ng-click="listInfo('{{item.processinstId}}','{{item.workItemID}}')">
+                    <img src="project/res/img/1_18.png" width="20" height="20">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-list>
+          <div ng-if = "listIsNull == '0' " class="listIsNull">
+            <!--为空 -->
+            <div class="noData"><p class = "listIsNull-font">暂无数据</p></div>
+          </div>
+          <ion-infinite-scroll on-infinite="pageRefresh()"  ng-if = "isTrue == '1' "  immediate-check="false"   spinner="bubbles"  ></ion-infinite-scroll>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="TodoListDetail.html">
+      <div class="TodoListDetail">
+        <ion-view hide-tabs>
+          <div>
+            <ion-header-bar class="barmy" align-title="center">
+              <div class="buttons">
+                <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+              </div>
+              <h1 class="title">审批详情</h1>
+              <div class="buttons">
+                <i class="icon ion-ios-list-outline lookCheckList" ng-click="lookCheckList(im.tpId)" title="查看审批列表信息"></i>
+              </div>
+            </ion-header-bar>
+          </div>
+          <ion-content class="backgroundColor#eeeeee">
+            <div ng-if = "hStatus == 0" class="mgnL10px mgnR10px lk errorAlert">
+              重要提示：由于此计划含有不属于该处理处置单位经营范围内的废物类别，所以不允许审批通过！
+            </div>
+            <div ng-if = "isTrue == '1'">
+              <div class="lk infoDetail mgnL10px mgnR10px mgnT10px ofh">
+                <div >
+                  <div class="descFont ftl detailColOne">
+                    转移计划编号：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.tpId}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    产生单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    运输单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameYs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    处置单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCz}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    座机-分机号：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkTel}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    手机：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkPhone}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    起止时间：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+                  </div>
+                </div>
+              </div>
+              <center class="detailSubTitile">转移计划转移废物明细信息</center>
+              <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh">
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.dName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    形态：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.shape}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    主要成分：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.meterial}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物类别：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    类别名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物代码：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryId}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物产生说明：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryComment}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    预计量：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unitNum}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unit}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="height: 30px;">&nbsp;</div>
+            <div ng-if = "isTrue == '0' " class="listIsNull">
+              <!--为空 -->
+              <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+            </div>
+          </ion-content>
+          <div class="bar bar-footer pdgB10px backgroundColorWhite" ng-if="$root.checkStatus">
+            <div class="buttonWidth">
+              <button id="bh" class="button buttonBh buttonCss" ng-click="checkInfo(0)">驳回</button>
+            </div>
+            &nbsp;&nbsp;
+            <div ng-if = "hStatus == 1" class="buttonWidth">
+              <button id="tg" class="button button-calm buttonMy buttonCss " ng-click="checkInfo(1)">通过</button>
+            </div>
+            <div ng-if = "hStatus == 0" class="buttonWidth">
+              <button id="tg" class="button button-calm buttonMy buttonCss" ng-click="checkInfo(1)" disabled>通过</button>
+            </div>
+          </div>
+        </ion-view>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="TodoListDetail2.html">
+      <div class="TodoListDetail2">
+        <ion-view hide-tabs>
+          <ion-header-bar class="barmy" align-title="center">
+            <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+            <h1 class="title">审批列表信息</h1>
+          </ion-header-bar>
+          <ion-content>
+            <div ng-if = "isTrue == 1">
+              <div ng-repeat="item in items" item="item" class="lk info mgnL10px mgnR10px mgnT10px ofh">
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    审批日期：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.checkDate}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    业务类型：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bizType}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    审批人：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.btofName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    审批机关：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.btoName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    审批意见：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.checkResultName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    审批意见说明：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.checkAdvice}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-if = "isTrue == 0 " class="listIsNull">
+              <!--为空 -->
+              <div class="noData"><p class = "listIsNull-font">暂无历史审批数据！</p></div>
+            </div>
+          </ion-content>
+        </ion-view>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="tab-account.html">
+      <ion-view class="tab-account">
+        <ion-header-bar class="barmy" align-title="center">
+          <h1 class="title">{{$root.const.tab3.header_title}}</h1>
+        </ion-header-bar>
+        <ion-content class="background-color-#eeeeee">
+          <div item="item" class="lk info loginInfoPdg mgnL10px mgnR10px ">
+            <div class="descFont">
+              用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="coreFont">{{userData.userId}}</span>
+            </div>
+            <div class="descFont">
+              所属机关：&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="coreFont">{{userData.orgName}}</span>
+            </div>
+          </div>
+          <div id="bh" class="lk info loginInfoPdg mgnL10px mgnR10px loginOutButton" ng-click="showConfirm()">退出登录
+            <img src="project/res/img/set_11.png" width="18" height="18" class="ftr mt">
+          </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="login.html">
+      <ion-view hide-tabs view-title="账号登录">
+        <ion-nav-bar class="bar-my" id="setIpProt" ng-click="setIpProt()">
+        </ion-nav-bar>
+        <ion-content >
+          <div class="list">
+            <label class="item item-input label-border">
+              <span style="width: 25%;">用户名：</span>
+              <input type="text" placeholder="请输入用户名" ng-model="username" id="username"/>
+            </label>
+            <label class="item item-input label-border">
+              <span style="width: 25%;">密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+              <input type="password" placeholder="请输入密码" ng-model="pwd" id="pwd"/>
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive button-my" ng-click="login();">登录</button>
+          </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="tabs.html">
+      <ion-tabs class="tabs-icon-top tabs-my {{hideTabs}}">
+
+        <!-- search Tab -->
+        <ion-tab title="{{$root.const.tab1.tab_title}}" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/tab/search">
+          <ion-nav-view name="tab-search"></ion-nav-view>
+        </ion-tab>
+
+        <!-- todolist Tab -->
+        <ion-tab title="{{$root.const.tab2.tab_title}}" icon-off="bar-unfinished-off" icon-on="bar-unfinished-on"  href="#/tab/todolist">
+          <ion-nav-view name="tab-todolist"></ion-nav-view>
+        </ion-tab>
+
+        <!-- Account Tab -->
+        <ion-tab title="{{$root.const.tab3.tab_title}}" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
+          <ion-nav-view name="tab-account"></ion-nav-view>
+        </ion-tab>
+
+        <!--修改编码-->
+      </ion-tabs>
+    </script>
+
+    <script type="text/ng-template" id="tab01.html">
+      <div ng-controller="Tab01Ctrl" class="Tab01">
+        <ion-side-menus>
+          <ion-side-menu-content drag-content="false">
+            <ion-pane>
+              <div class="pdgL8px pdgR8px pdgT5px">
+                <div class="bar bar-header item-input-inset lk query" ng-click="queryInfo()">
+                  <label class="item-input-wrapper backgroundColorWhite">
+                    <input id="queryInput" type="search" placeholder="请输入搜索内容" readonly>
+                    <i class="icon ion-ios-search placeholder-icon queryIcon"></i>
+                  </label>
+                </div>
+                <button class="button button-small sxButtion lk" ng-click="toggleRight(true)" >筛选</button>
+              </div>
+              <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5" class="queryListPdg pdgB5px" >
+                <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles">
+                </ion-refresher>
+                <show-context-css></show-context-css>
+                <ion-list ng-if = "listIsNull == 1 ">
+                  <div ng-repeat="item in items" item="item"  class="positionRelative">
+                    <div class="main lk info mgnL10px mgnR10px ofh">
+                      <div class="left descFont ftl leftWidth80" >
+                        <div>
+                          <div class="ftl leftTitle35">
+                            处置协议编号：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.amId}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            是否补充协议：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.ifAdditionalName}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            产生单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            运输单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameYs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            处置单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCz | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            起止时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.begintimeStr}}&nbsp;至&nbsp;{{item.endtimeStr}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            操作时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.actiondateStr}}
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="item.statusName.length > 8">
+                        <show-context divid="{{item.amId}}" width="100" height="58" mtop="-16.5" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div ng-if="item.statusName.length <= 8">
+                        <show-context divid="{{item.amId}}" width="100" height="35" mtop="-10" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div class="right ftl rightWidth">
+                        <div class="statusCss ftr" title="{{item.statusName}}" ng-style="item.statusName  |  StyleUtil"  on-hold="onHold('{{item.amId}}','{{ item.statusName}}')" on-release="onRelease('{{item.amId}}')">
+                          {{ item.statusName | StringUtil :4 }}
+                        </div>
+                        <div  class="coreFont ftr crr detailInfo" ng-click="listInfo('{{item.amId}}')">
+                          <img src="project/res/img/1_18.png" width="20" height="20">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ion-list>
+                <div ng-if = "listIsNull == 0 " class="listIsNull">
+                  <!--为空 -->
+                  <div class="noData"><p class = "listIsNull-font">{{$root.loadData}}</p></div>
+                </div>
+                <ion-infinite-scroll on-infinite="pageRefresh()"  ng-if = "isTrue == 1 " immediate-check="false" distance="0.01%" ></ion-infinite-scroll>
+              </ion-content>
+            </ion-pane>
+          </ion-side-menu-content>
+          <ion-side-menu side="right" class="dbsPage" width="myWidthValue + 234">
+            <header class="bar bar-header bar-stable barmy">
+              <span class="title" style="color: #e4e5e7;font-size: 15px;">筛选</span>
+              <div class="buttons">
+                <a menu-close style="color: #e4e5e7;font-size: 15px;padding-right: 8px;">取消</a>
+              </div>
+            </header>
+            <ion-content class="has-header padding-top-0px" style="height: 82.5%;">
+              <div class="ion-item-pdg">
+                <div class="item item-input item-select queryHeight">
+                  <div class="input-label colorAndSize">
+                    状态：
+                  </div>
+                  <select id="status" class="colorAndSize2" style="padding-top: 30px;font-size: 13px;color: #717171;">
+                    <option value="">请选择</option>
+                    <option ng-repeat="dict in dicts" value="{{dict.dictId}}">{{dict.dictName}}</option>
+                  </select>
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期起始日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;" readonly  ng-click="openDatePickerOne(1)" value="点击选择日期" id="begDate">
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期结束日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;"  readonly  ng-click="openDatePickerOne(2)" value="点击选择日期" id="endDate">
+                </div>
+              </div>
+            </ion-content>
+            <div class="bar bar-footer">
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="clearParam()">重置</button>
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="sx()">确定</button>
+            </div>
+          </ion-side-menu>
+        </ion-side-menus>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="tab02.html">
+      <div ng-controller="Tab02Ctrl" class="Tab02">
+        <ion-side-menus>
+          <ion-side-menu-content drag-content="false">
+            <ion-pane >
+              <div class="pdgL8px pdgR8px pdgT5px">
+                <div class="bar bar-header item-input-inset lk query" ng-click="queryInfo()">
+                  <label class="item-input-wrapper backgroundColorWhite">
+                    <input id="queryInput1"  type="search" placeholder="请输入搜索内容" readonly>
+                    <i class="icon ion-ios-search placeholder-icon queryIcon"></i>
+                  </label>
+                </div>
+                <button class="button button-small sxButtion lk" ng-click="toggleRight(true)" >筛选</button>
+              </div>
+              <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5"  class="queryListPdg pdgB5px" >
+                <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles">
+                </ion-refresher>
+                <show-context-css></show-context-css>
+                <ion-list ng-if = "listIsNull1 == 1 ">
+                  <div ng-repeat="item in items" item="item"  class="positionRelative">
+                    <div class="main lk info mgnL10px mgnR10px ofh">
+                      <div class="left descFont ftl leftWidth80" >
+                        <div>
+                          <div class="ftl leftTitle35">
+                            转移计划编号：
+                          </div>
+                          <div class="coreFont ftl">
+                            {{item.tpId}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            产生单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            运输单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameYs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            处置单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCz | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            是否补充协议：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.ifAdditionalName}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            起止时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.begintimeStr}}&nbsp;至&nbsp;{{item.endtimeStr}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            操作时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.actiondateStr}}
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="item.statusName.length > 8">
+                        <show-context divid="{{item.tpId}}" width="100" height="58" mtop="-16.5" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div ng-if="item.statusName.length <= 8">
+                        <show-context divid="{{item.tpId}}" width="100" height="35" mtop="-10" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div class="right ftl rightWidth">
+                        <div class="statusCss ftr" ng-style="item.statusName  |  StyleUtil"on-hold="onHold('{{item.tpId}}','{{ item.statusName}}')" on-release="onRelease('{{item.tpId}}')">
+                          {{item.statusName  | StringUtil :4 }}
+                        </div>
+                        <div  class="coreFont ftr crr detailInfo" ng-click="listInfo('{{item.tpId}}')">
+                          <img src="project/res/img/1_18.png" width="20" height="20">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ion-list>
+                <div ng-if = "listIsNull1 == 0 " class="listIsNull1">
+                  <!--为空 -->
+                  <div class="noData"><p class = "listIsNull-font">{{$root.loadData}}</p></div>
+                </div>
+                <ion-infinite-scroll on-infinite="pageRefresh()"  ng-if = "isTrue1 == 1 "  immediate-check="false"   spinner="bubbles"></ion-infinite-scroll>
+              </ion-content>
+            </ion-pane>
+          </ion-side-menu-content>
+          <ion-side-menu side="right" class="dbsPage" width="myWidthValue + 234">
+            <header class="bar bar-header bar-stable barmy">
+              <span class="title" style="color: #e4e5e7;font-size: 15px;">筛选</span>
+              <div class="buttons">
+                <a menu-close style="color: #e4e5e7;font-size: 15px;padding-right: 8px;">取消</a>
+              </div>
+            </header>
+            <ion-content class="has-header padding-top-0px">
+              <div class="ion-item-pdg">
+                <div class="item item-input item-select queryHeight">
+                  <div class="input-label colorAndSize">
+                    状态：
+                  </div>
+                  <select id="status1" class="colorAndSize2" style="padding-top: 30px;font-size: 13px;color: #717171;">
+                    <option value="">请选择</option>
+                    <option ng-repeat="dict in dicts" value="{{dict.dictId}}">{{dict.dictName}}</option>
+                  </select>
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期起始日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;" readonly  ng-click="openDatePickerOne(1)" value="点击选择日期" id="begDate1">
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期结束日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;"  readonly  ng-click="openDatePickerOne(2)" value="点击选择日期" id="endDate1">
+                </div>
+              </div>
+            </ion-content>
+            <div class="bar bar-footer" style="margin-bottom: 50px;">
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="clearParam()">
+                重置
+              </button>
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="sx()">
+                确定
+              </button>
+            </div>
+          </ion-side-menu>
+        </ion-side-menus>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="tab03.html">
+      <div ng-controller="Tab03Ctrl" class="Tab03">
+        <ion-side-menus>
+          <ion-side-menu-content drag-content="false">
+            <ion-pane >
+              <div class="pdgL8px pdgR8px pdgT5px">
+                <div class="bar bar-header item-input-inset lk query" ng-click="queryInfo()">
+                  <label class="item-input-wrapper backgroundColorWhite">
+                    <input id="queryInput2"  type="search" placeholder="请输入搜索内容" readonly>
+                    <i class="icon ion-ios-search placeholder-icon queryIcon"></i>
+                  </label>
+                </div>
+                <button class="button button-small sxButtion lk" ng-click="toggleRight(true)" >筛选</button>
+              </div>
+              <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5"  class="queryListPdg pdgB5px" >
+                <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles">
+                </ion-refresher>
+                <show-context-css></show-context-css>
+                <ion-list ng-if = "listIsNull2 == 1 ">
+                  <div ng-repeat="item in items" item="item"  class="positionRelative">
+                    <div class="main lk info mgnL10px mgnR10px ofh">
+                      <div class="left descFont ftl leftWidth80" >
+                        <div>
+                          <div class="ftl leftTitle35">
+                            转移联单编号：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.tbId}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            产生单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            运输单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameYs | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            处置单位：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.enNameCz | StringUtil :24 }}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            是否汇总：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.ifCollectName}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            起止时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.begintimeStr}}&nbsp;至&nbsp;{{item.endtimeStr}}
+                          </div>
+                        </div>
+                        <div class="crl">
+                          <div class="ftl leftTitle35">
+                            操作时间：
+                          </div>
+                          <div class="coreFont ftl listColTwo">
+                            {{item.actiondateStr}}
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="item.statusName.length > 8">
+                        <show-context divid="{{item.tbId}}" width="100" height="58" mtop="-16.5" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div ng-if="item.statusName.length <= 8">
+                        <show-context divid="{{item.tbId}}" width="100" height="35" mtop="-10" mleft="66"  ctt="{{ item.statusName}}"></show-context>
+                      </div>
+                      <div class="right ftl rightWidth">
+                        <div class="statusCss ftr" ng-style="item.statusName  |  StyleUtil" on-hold="onHold('{{item.tbId}}','{{ item.statusName}}')" on-release="onRelease('{{item.tbId}}')">
+                          {{item.statusName  | StringUtil :4 }}
+                        </div>
+                        <div  class="coreFont ftr crr detailInfo" ng-click="listInfo('{{item.tbId}}')">
+                          <img src="project/res/img/1_18.png" width="20" height="20">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ion-list>
+                <div ng-if = "listIsNull2 == 0 " class="listIsNull1">
+                  <!--为空 -->
+                  <div class="noData"><p class = "listIsNull-font">{{$root.loadData}}</p></div>
+                </div>
+                <ion-infinite-scroll on-infinite="pageRefresh()"  ng-if = "isTrue2 == 1 "  immediate-check="false"   spinner="bubbles"></ion-infinite-scroll>
+              </ion-content>
+            </ion-pane>
+          </ion-side-menu-content>
+          <ion-side-menu side="right" class="dbsPage" width="myWidthValue + 234">
+            <header class="bar bar-header bar-stable barmy">
+              <span class="title" style="color: #e4e5e7;font-size: 15px;">筛选</span>
+              <div class="buttons">
+                <a menu-close style="color: #e4e5e7;font-size: 15px;padding-right: 8px;">取消</a>
+              </div>
+            </header>
+            <ion-content class="has-header padding-top-0px">
+              <div class="ion-item-pdg">
+                <div class="item item-input item-select queryHeight">
+                  <div class="input-label colorAndSize">
+                    状态：
+                  </div>
+                  <select id="status2" class="colorAndSize2" style="padding-top: 30px;font-size: 13px;color: #717171;">
+                    <option value="">请选择</option>
+                    <option ng-repeat="dict in dicts" value="{{dict.dictId}}">{{dict.dictName}}</option>
+                  </select>
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期起始日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;" readonly  ng-click="openDatePickerOne(1)" value="点击选择日期" id="begDate2">
+                </div>
+                <div class="item item-input item-date queryHeight">
+                  <div class="input-label colorAndSize titleDq">
+                    周期结束日：
+                  </div>
+                  <input type="text" style="font-size: 13px;color: #717171;background-color:white;"  readonly  ng-click="openDatePickerOne(2)" value="点击选择日期" id="endDate2">
+                </div>
+              </div>
+            </ion-content>
+            <div class="bar bar-footer" style="margin-bottom: 50px;">
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="clearParam()">
+                重置
+              </button>
+              &nbsp;&nbsp;
+              <button class="button button-calm" ng-click="sx()">
+                确定
+              </button>
+            </div>
+          </ion-side-menu>
+        </ion-side-menus>
+      </div>
+    </script>
+
+    <script type="text/ng-template" id="tab-search.html">
+      <ion-view>
+        <ion-header-bar class="bar-my">
+          <div style="width:100%;overflow-x:scroll;position: absolute; height: 32px;" id="tab-search-header-tab">
+            <div style="text-align: center;position: absolute;width: 30%;left:{{$index*30}}%;" class="tab_default" ng-repeat="d in tabNames" ng-click="activeSlide($index)" ng-class="slectIndex==$index ? 'tab_select' : '' ">
+              {{d}}
+            </div>
+          </div>
+        </ion-header-bar>
+        <ion-content has-bouncing="false" style="background-color: #eeeeee;">
+          <ion-slide-box ng-style="mySlide" on-slide-changed="slideChanged(index)" active-slide="slideIndex" does-continue="false" show-pager="false">
+            <ion-slide ng-repeat="p in pages">
+              <div ng-include="p"></div>
+            </ion-slide>
+          </ion-slide-box>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="query.html">
+      <ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+        <div class="query">
+          <ion-pane class="backgroundColor#eeeeee">
+            <ion-header-bar class="barmy" align-title="center">
+              <i class="icon ion-ios-arrow-back"  ng-click="myGoBack(true)" title="返回">&nbsp;返回</i>
+              <h1 class="title" style="font-size: 17px;!important;">{{$root.queryTitle}}</h1>
+            </ion-header-bar>
+            <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5" class="leftRightPdg" >
+              <ion-list>
+                <form ng-submit="search()">
+                  <div class="bar bar-header item-input-inset lk queryDiv">
+                    <div class="item-input-wrapper backgroundColorWhite">
+                      <input id="search" type="search" class="queryInputWidth" placeholder="请输入搜索内容">
+                      <i class="icon ion-ios-search placeholder-icon queryIcon " ng-click="search()"></i>
+                    </div>
+                  </div>
+                </form>
+                <div class="crl queryContextDiv">
+                  <div class="ftl">
+                    历史搜索
+                  </div>
+                  <div ng-click="clearQuery()" title="删除搜索记录"  class="ftr delQueryCt">
+                  </div>
+                  <div class="crl" >
+                    <div class="ftl  queryContexts" ng-repeat="item in Items" item="item" ng-click="query('{{item.queryContext}}')" >
+                      {{item.queryContext}}
+                    </div>
+                  </div>
+                </div>
+              </ion-list>
+            </ion-content>
+          </ion-pane>
+        </div>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="tab01Detail.html">
+      <ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+        <div class="Tab01Detail">
+          <ion-header-bar class="barmy" align-title="center">
+            <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+            <h1 class="title">处置协议明细</h1>
+          </ion-header-bar>
+          <show-context-css></show-context-css>
+          <div ng-if="im.statusName.length > 8">
+            <show-context divid="{{im.amId}}detail" width="100" height="58" mtop="2" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <div ng-if="im.statusName.length <= 8">
+            <show-context divid="{{im.amId}}detail" width="100" height="35" mtop="8.5" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <ion-content has-bouncing="false" class="backgroundColor#eeeeee">
+            <div ng-if = "$root.isTrue == '1' ">
+              <div class="lk infoDetail mgnL10px mgnR10px backgroundColorWhite ofh">
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    处置协议编号：
+                  </div>
+                  <div class="coreFont ftl detailColTwo">
+                    {{im.amId}}
+                  </div>
+                  <div class="ftr statusCss detailColThree" ng-style="im.statusName  |  StyleUtil" on-hold="onHold()" on-release="onRelease()">
+                    {{im.statusName  | StringUtil :4 }}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    产生单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    运输单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameYs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    处置单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCz}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    座机-分机号：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkTel}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    手机：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkPhone}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    起止时间：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+                  </div>
+                </div>
+              </div>
+              <center class="detailSubTitile">处置协议产生废物明细信息</center>
+              <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh " >
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.dName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    形态：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.shape}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    主要成分：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.meterial}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物类别：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    类别名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物代码：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryId}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物产生说明：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryComment}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    预计量：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unitNum}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unit}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-if = "$root.isTrue == '0' " class="listIsNull">
+              <!--为空 -->
+              <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+            </div>
+          </ion-content>
+        </div>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="tab02Detail.html">
+      <ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+        <div class="Tab01Detail">
+          <ion-header-bar class="barmy" align-title="center">
+            <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+            <h1 class="title">转移计划明细</h1>
+          </ion-header-bar>
+          <show-context-css></show-context-css>
+          <div ng-if="im.statusName.length > 8">
+            <show-context divid="{{im.tpId}}detail" width="100" height="58" mtop="2" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <div ng-if="im.statusName.length <= 8">
+            <show-context divid="{{im.tpId}}detail" width="100" height="35" mtop="8.5" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <ion-content has-bouncing="false" class="backgroundColor#eeeeee">
+            <div ng-if = "$root.isTrue == '1' ">
+              <div class="lk infoDetail mgnL10px mgnR10px backgroundColorWhite ofh">
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    转移计划编号：
+                  </div>
+                  <div class="coreFont ftl detailColTwo">
+                    {{im.tpId}}
+                  </div>
+                  <div class="ftr statusCss detailColThree" ng-style="im.statusName  |  StyleUtil" on-hold="onHold()" on-release="onRelease()">
+                    {{im.statusName   | StringUtil :4 }}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    产生单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    运输单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameYs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    处置单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCz}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    产废联系人：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkMan}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    座机-分机号：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkTel}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    手机：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.linkPhone}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    起止时间：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+                  </div>
+                </div>
+              </div>
+              <center class="detailSubTitile">转移计划转移废物明细信息</center>
+              <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh " >
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.dName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    形态：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.shape}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    主要成分：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.meterial}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物类别：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    类别名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物代码：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryId}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物产生说明：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryComment}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    预计量：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unitNum}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unit}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-if = "$root.isTrue == '0' " class="listIsNull">
+              <!--为空 -->
+              <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+            </div>
+          </ion-content>
+        </div>
+      </ion-view>
+    </script>
+
+    <script type="text/ng-template" id="tab03Detail.html">
+      <ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+        <div class="Tab01Detail">
+          <ion-header-bar class="barmy" align-title="center">
+            <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+            <h1 class="title">转移联单明细</h1>
+          </ion-header-bar>
+          <show-context-css></show-context-css>
+          <div ng-if="im.statusName.length > 8">
+            <show-context divid="{{im.tbId}}detail" width="100" height="58" mtop="2" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <div ng-if="im.statusName.length <= 8">
+            <show-context divid="{{im.tbId}}detail" width="100" height="35" mtop="8.5" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+          </div>
+          <ion-content has-bouncing="false" class="backgroundColor#eeeeee">
+            <div ng-if = "$root.isTrue == '1' ">
+              <div class="lk infoDetail mgnL10px mgnR10px backgroundColorWhite ofh">
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    转移联单编号：
+                  </div>
+                  <div class="coreFont ftl detailColTwo">
+                    {{im.tbId}}
+                  </div>
+                  <div class="ftr statusCss detailColThree" ng-style="im.statusName  |  StyleUtil" on-hold="onHold()" on-release="onRelease()">
+                    {{im.statusName  | StringUtil :4 }}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    产生单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    运输单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameYs}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    处置单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.enNameCz}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    起止时间：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+                  </div>
+                </div>
+              </div>
+              <center class="detailSubTitile">转移联单转移废物明细信息</center>
+              <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh " >
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.dName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    形态：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.shape}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    主要成分：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.meterial}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物类别：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    类别名称：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.bigCategoryName}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物代码：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryId}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    废物产生说明：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.smallCategoryComment}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    预计量：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unitNum}}
+                  </div>
+                </div>
+                <div class="crl">
+                  <div class="descFont ftl detailColOne">
+                    单位：
+                  </div>
+                  <div class="coreFont ftl detailWidth70">
+                    {{item.unit}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-if = "$root.isTrue == '0' " class="listIsNull">
+              <!--为空 -->
+              <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+            </div>
+          </ion-content>
+        </div>
+      </ion-view>
+    </script>
+
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

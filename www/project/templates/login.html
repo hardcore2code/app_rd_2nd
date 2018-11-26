@@ -1,0 +1,19 @@
+<ion-view hide-tabs view-title="账号登录">
+	<ion-nav-bar class="bar-my" id="setIpProt" ng-click="setIpProt()">
+	</ion-nav-bar>
+	<ion-content >
+		<div class="list">
+			<label class="item item-input label-border">
+				<span style="width: 25%;">用户名：</span>
+				<input type="text" placeholder="请输入用户名" ng-model="username" id="username"/>
+			</label>
+			<label class="item item-input label-border">
+				<span style="width: 25%;">密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+				<input type="password" placeholder="请输入密码" ng-model="pwd" id="pwd"/>
+			</label>
+		</div>
+		<div class="padding">
+			<button class="button button-block button-positive button-my" ng-click="login();">登录</button>
+		</div>
+	</ion-content>
+</ion-view>

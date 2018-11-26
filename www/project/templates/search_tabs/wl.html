@@ -1,0 +1,440 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<div class="TodoListDetail2">
+  <ion-view hide-tabs>
+    <ion-header-bar class="barmy" align-title="center">
+      <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+      <h1 class="title">查看物流信息</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div ng-if = "status == '01'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.actionDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              已删除
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              制单人：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.createPerson}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '00'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.actionDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              正在制单
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              制单人：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.createPerson}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '09' || status == '03' || status == '04' || status == '05' || status == '02' || status == '06' || status == '10' || status == '11' || status == '12'  || status == '13'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.tbDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              制单成功
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              制单人：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.createPerson}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = " status == '03' || status == '04' || status == '02' || status == '06' || status == '10' || status == '11' || status == '12'  || status == '13'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              运输方接收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              产生方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.csy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '06'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.actionDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              处置方申请等待
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '05'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.reasonDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              运输方拒收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              拒收原因：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.reason}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              产生方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.csy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '04'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.reasonDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              处置方拒收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              拒收原因：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.reason}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '03'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.jsDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              处置方接收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '10'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.jsDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              车辆变更异常接收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '11'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.jsDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              无身份卡异常接收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '12'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.jsDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              无联单卡异常接收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if = "status == '13'">
+        <div  class="lk info mgnL10px mgnR10px mgnT10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              日期时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.jsDate}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              状态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              无联单异常拒收
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.czy}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输方：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.ysy}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>
+</div>

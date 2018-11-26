@@ -1,0 +1,84 @@
+<!--
+created by woody
+date 20170301
+程序入口页面
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>天津危险废物监管平台APP</title>
+    <link rel="manifest" href="manifest.json">
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+    <link href="project/lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="project/css/common.css" rel="stylesheet">
+	  <link href="project/css/Tab01.css" rel="stylesheet" type="text/css">
+    <link href="project/css/TodoList.css" rel="stylesheet" type="text/css">
+    <link href="project/css/TodoListDetail.css" rel="stylesheet" type="text/css">
+    <link href="project/css/TodoListDetail2.css" rel="stylesheet" type="text/css">
+    <link href="project/css/Tab01Detail.css" rel="stylesheet" type="text/css">
+    <link href="project/css/Tab02.css" rel="stylesheet" type="text/css">
+    <link href="project/css/Tab02Detail.css" rel="stylesheet" type="text/css">
+    <link href="project/css/Tab03.css" rel="stylesheet" type="text/css">
+    <link href="project/css/Tab03Detail.css" rel="stylesheet" type="text/css">
+    <link href="project/css/query.css" rel="stylesheet" type="text/css">
+    <link href="project/css/dbsPage.css" rel="stylesheet" type="text/css">
+    <link href="project/css/login.css" rel="stylesheet" type="text/css">
+    <link href="project/css/tab-account.css" rel="stylesheet" type="text/css">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="project/lib/ionic/js/ionic.bundle.js"></script>
+    <script src="project/lib/ionic-datepicker/ionic-datepicker.bundle.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="project/lib/ngcordova/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+    <!-- libs js -->
+    <script src="project/lib/ionic-native-transitions/ionic-native-transitions.min.js"></script>
+    <script src="project/lib/angular-local-storage/angular-local-storage.min.js"></script>
+    <script src="project/lib/jquery/jquery.min.js"></script>
+    <!-- your app's js -->
+    <script src="project/js/app.js"></script>
+    <script src="project/js/directives/HideTabs.js"></script>
+    <script src="project/js/directives/ShowContext.js"></script>
+    <script src="project/js/directives/ShowContextCss.js"></script>
+    <script src="project/js/services/Init.js"></script>
+    <script src="project/js/services/Alert.js"></script>
+    <script src="project/js/services/LoginFilter.js"></script>
+    <script src="project/js/services/BackUtil.js"></script>
+    <script src="project/js/services/LoadUtil.js"></script>
+    <script src="project/js/controllers/SearchCtrl.js"></script>
+    <script src="project/js/controllers/TodoListCtrl.js"></script>
+    <script src="project/js/controllers/TodoListDetailCtrl.js"></script>
+    <script src="project/js/controllers/TodoListDetail2Ctrl.js"></script>
+    <script src="project/js/controllers/loginCtrl.js"></script>
+    <script src="project/js/controllers/AccountCtrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab01Ctrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab01DetailCtrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab02Ctrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab02DetailCtrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab03Ctrl.js"></script>
+    <script src="project/js/controllers/search_tabs/Tab03DetailCtrl.js"></script>
+    <script src="project/js/controllers/search_tabs/queryCtrl.js"></script>
+    <script src="project/js/controllers/search_tabs/wlCtrl.js"></script>
+    <script src="project/js/filters/StringUtil.js"></script>
+    <script src="project/js/filters/StyleUtil.js"></script>
+  </head>
+  <body ng-app="myapp">
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

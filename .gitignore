@@ -1,0 +1,12 @@
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
+platforms/.idea/compiler.xml
+platforms/.idea/workspace.xml
+platforms/.idea/vcs.xml
+platforms/.idea/platforms.iml
+platforms/.idea/modules.xml
+platforms/.idea/misc.xml
+platforms/.idea/copyright/profiles_settings.xml

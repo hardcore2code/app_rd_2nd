@@ -1,0 +1,167 @@
+<ion-view hide-tabs view-title="{{$root.const.tab5.header_title}}">
+    <div class="Tab01Detail">
+        <ion-header-bar class="barmy" align-title="center">
+            <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+            <h1 class="title">处置协议明细</h1>
+        </ion-header-bar>
+        <show-context-css></show-context-css>
+        <div ng-if="im.statusName.length > 8">
+            <show-context divid="{{im.amId}}detail" width="100" height="58" mtop="2" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+        </div>
+        <div ng-if="im.statusName.length <= 8">
+            <show-context divid="{{im.amId}}detail" width="100" height="35" mtop="8.5" mleft="72"  ctt="{{im.statusName}}" style="position: absolute;width: 100%;"></show-context>
+        </div>
+        <ion-content has-bouncing="false" class="backgroundColor#eeeeee">
+            <div ng-if = "$root.isTrue == '1' ">
+                <div class="lk infoDetail mgnL10px mgnR10px backgroundColorWhite ofh">
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            处置协议编号：
+                        </div>
+                        <div class="coreFont ftl detailColTwo">
+                            {{im.amId}}
+                        </div>
+                        <div class="ftr statusCss detailColThree" ng-style="im.statusName  |  StyleUtil" on-hold="onHold()" on-release="onRelease()">
+                            {{im.statusName  | StringUtil :4 }}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            产生单位：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.enNameCs}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            运输单位：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.enNameYs}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            处置单位：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.enNameCz}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            产废联系人：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.linkMan}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            座机-分机号：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.linkTel}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            手机：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.linkPhone}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            起止时间：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+                        </div>
+                    </div>
+                </div>
+                <center class="detailSubTitile">处置协议产生废物明细信息</center>
+                <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh " >
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            废物名称：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.dName}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            形态：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.shape}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                           主要成分：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.meterial}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            废物类别：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.bigCategoryId}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            类别名称：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.bigCategoryName}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            废物代码：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.smallCategoryId}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            废物产生说明：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.bigCategoryComment}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            预计量：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.unitNum}}
+                        </div>
+                    </div>
+                    <div class="crl">
+                        <div class="descFont ftl detailColOne">
+                            单位：
+                        </div>
+                        <div class="coreFont ftl detailWidth70">
+                            {{item.unit}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if = "$root.isTrue == '0' " class="listIsNull">
+                <!--为空 -->
+                <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>

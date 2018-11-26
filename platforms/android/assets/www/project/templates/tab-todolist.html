@@ -1,0 +1,74 @@
+<ion-view  view-title="{{$root.const.tab2.header_title}}"  class="TodoList">
+  <ion-nav-bar class="bar-my">
+  </ion-nav-bar>
+  <ion-content header-shrink name="_pub_content_name" scroll-event-interval="5" class="paddingTop5px">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="下拉更新..." spinner="bubbles">
+    </ion-refresher>
+    <ion-list ng-if = "listIsNull == '1' ">
+      <div ng-repeat="item in items" item="item" class="positionRelative">
+        <div class="main lk checkInfocss mgnL10px mgnR10px ofh">
+          <div class="left">
+            <div>
+              <div class="descFont ftl detailColOne">
+                转移计划编号：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.tpId}}
+              </div>
+            </div>
+            <div>
+              <div class="descFont ftl detailColOne">
+                业务流程名称：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.bizName}}
+              </div>
+            </div>
+            <div>
+              <div class="descFont ftl detailColOne">
+                单位名称：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.epName}}
+              </div>
+            </div>
+            <div>
+              <div class="descFont ftl detailColOne">
+                所属环保局：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.btoName}}
+              </div>
+            </div>
+            <div>
+              <div class="descFont ftl detailColOne">
+                环节名称：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.workItemName}}
+              </div>
+            </div>
+            <div>
+              <div class="descFont ftl detailColOne crl">
+                申请时间：
+              </div>
+              <div class="coreFont ftr detailWidth70">
+                {{item.applyDate}}
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="coreFont ftr detailImg"  ng-click="listInfo('{{item.processinstId}}','{{item.workItemID}}')">
+              <img src="project/res/img/1_18.png" width="20" height="20">
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+    <div ng-if = "listIsNull == '0' " class="listIsNull">
+      <!--为空 -->
+      <div class="noData"><p class = "listIsNull-font">暂无数据</p></div>
+    </div>
+    <ion-infinite-scroll on-infinite="pageRefresh()"  ng-if = "isTrue == '1' "  immediate-check="false"   spinner="bubbles"  ></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

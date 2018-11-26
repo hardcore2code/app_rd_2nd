@@ -1,0 +1,49 @@
+.dbsPage .button {
+    background-color:#494156;
+    width: 45%;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.dbsPage .barmy{
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #e4e5e7;
+    line-height:32px;
+}
+
+.dbsPage .ion-item-pdg{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0 ;
+}
+
+.dbsPage .padding-top-0px{
+    padding-top: 0px;
+}
+
+.dbsPage .queryHeight{
+    height: 75px;
+    padding-top: 35px;
+}
+
+.dbsPage .colorAndSize{
+    color: #333333;
+    font-size: 13px;
+}
+
+.dbsPage .colorAndSize2{
+    color: #717171
+    font-size: 13px;
+}
+
+.dbsPage .buttons{
+    position:absolute;
+    z-index:999;
+    height: 60px;
+}
+
+.dbsPage .titleDq{
+    padding-top: 12px;
+    height: 100%;
+}

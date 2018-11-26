@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/project/css/Tab01.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/Tab01Detail.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/Tab02.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/Tab02Detail.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/Tab03.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/Tab03Detail.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/TodoList.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/TodoListDetail.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/TodoListDetail2.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/common.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/css/tab-account.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/TodoListCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab01Ctrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab01DetailCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab02Ctrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab02DetailCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab03Ctrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/Tab03DetailCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/queryCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/controllers/search_tabs/wlCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/services/Alert.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/services/BackUtil.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/services/Init.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/services/LoadUtil.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/js/services/LoginFilter.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/templates/search_tabs/tab02.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/templates/search_tabs/tab03.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/templates/tab-account.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/templates/tab-search.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/templates/tabs.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service-worker.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../rd_transfer/www/project/css/common.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../rd_transfer/www/project/css/readPage.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../rd_transfer/www/project/css/transferPage.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../rd_transfer/www/project/templates/readPage.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../../rd_transfer/www/project/templates/transferPage.html" charset="UTF-8" />
+  </component>
+</project>

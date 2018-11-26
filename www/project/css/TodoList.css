@@ -1,0 +1,25 @@
+.TodoList .checkInfocss{
+    padding: 10px 0px 10px 10px;
+    font-size: 12px;
+    line-height: 21px;
+    height: 146px
+}
+
+.TodoList .paddingTop5px{
+    padding-top: 5px;
+}
+
+.TodoList .positionRelative{
+    position: relative;
+}
+
+.TodoList .contextWidth75{
+    width: 75%;
+}
+
+.TodoList .detailImg {
+    width: 90%;
+    position: absolute;
+    top: 43.2%;
+    text-align: right;
+}

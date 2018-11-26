@@ -1,0 +1,18 @@
+.tab-account .loginInfoPdg{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.tab-account .loginOutButton{
+    margin-top: 0px;
+    height: 41px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 9px;
+}
+
+.tab-account .mt{
+    margin-top: 1.5px;
+}

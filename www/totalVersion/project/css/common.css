@@ -1,0 +1,315 @@
+/* Empty. Add your own CSS if you like */
+.tabs-my > .tabs, .tabs.tabs-my {
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #fff;
+}
+.bar-my {
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #fff;
+    border-style: none !important;
+    border-bottom: 0px hidden !important;
+}
+
+.tab_default{ 
+    /*border-bottom:solid 1px #F2F2F2;*/
+    padding:6px 0;
+}
+.tab_select{
+    /*border-bottom:solid 1px #3E89F5;*/
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration:underline;
+    /*border-bottom:1px solid #C5B8C8;*/
+}
+.arrow-top {
+position: absolute;
+width: 0;
+height: 0;
+top:20px;
+border: 6px solid #3E89F5;
+border-right-color:transparent;
+border-left-color: transparent;
+border-top-color: transparent;
+}
+.arrow-top:after {
+content:'';
+position:absolute;
+width: 0;
+height: 0;
+border: 12px solid #fff;
+right: -12px;
+bottom: -13px;
+border-right-color:transparent;
+border-left-color: transparent;
+border-top-color: transparent;
+}
+
+.buttonMy {
+    background-color:#494156;
+}
+
+.buttonBh {
+    background-color:white;
+}
+
+.paddingMy {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.lk{
+    -webkit-box-shadow: 0 0 5px 1px #9b9393 !important;
+    -moz-box-shadow: 0 0 5px 1px #9b9393 !important;
+    box-shadow: 0 0 5px 1px #9b9393 !important;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.info{
+    padding: 10px 0px 10px 10px;
+    font-size: 12px;
+    line-height: 21.28px;
+}
+
+.infoDetail{
+    padding: 10px 0px 10px 10px;
+    font-size: 12px;
+    line-height: 19.6px;
+    margin-top: 15px;
+}
+
+.query{
+    height: 31px;
+    width: 81.5%;
+    border: 0px;
+    float: left;
+    z-index:1;
+}
+
+.queryIcon{
+    font-size: 1.5em;
+}
+
+.sxButtion{
+    background:url('../res/img/1_06.png') no-repeat;
+    margin-left:8px;
+    font-size:12px;
+    background-position:center left;
+    padding-left: 19px;
+    position:absolute;
+    z-index:10;
+    background-size:17px 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.toTop{
+    position:absolute;
+    z-index:999;
+}
+
+.queryListPdg{
+    padding-top: 45px;
+}
+
+.statusCss{
+    background:url('../res/img/1_11.png');
+    text-align: right;
+    padding-right: 10px;
+    color: #6d4b76;
+}
+
+.coreFont{
+    color: #333333;
+}
+
+.descFont{
+    color: #717171;
+}
+
+.ftr
+{
+    float:right;
+}
+
+.ftl
+{
+    float:left;
+}
+
+.crl{
+    clear: left;
+}
+
+.crr{
+    clear: right;
+}
+
+.leftRightPdg{
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 5px;
+}
+
+.pdgR10px{
+    padding-right: 10px;
+}
+
+.pdgL8px{
+    padding-left: 8px;
+}
+
+.pdgR8px{
+    padding-right: 8px;
+}
+
+.mgnL10px{
+    margin-left: 10px;
+}
+
+.mgnT10px{
+    margin-top: 10px;
+}
+
+.mgnR10px{
+    margin-right: 10px;
+}
+
+.pdgT5px{
+    padding-top : 5px;
+}
+
+.pdgB10px{
+    padding-bottom: 10px;
+}
+
+.pdgB5px{
+    padding-bottom: 5px;
+}
+
+.backgroundColorWhite{
+    background-color: white;
+}
+
+.backgroundColor#eeeeee{
+    background-color: #eeeeee;
+}
+
+.barmy{
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #e4e5e7;
+    line-height:32px;
+}
+
+.title{
+    color: #e4e5e7;
+}
+
+.detailSubLine{
+    border-bottom: 2px solid #dedddd;
+}
+
+.detailSubTitile{
+    height: 27px;
+    padding-top: 15px;
+    font-weight: bold;
+}
+
+.checkIon{
+    background:url('../res/img/1_18.png') no-repeat
+}
+
+.listColOne{
+    width: 25%;
+}
+
+.listColTwo{
+    width: 62%;
+}
+
+.detailColOne{
+    width: 28%;
+}
+
+.detailColTwo{
+    width: 44%
+}
+
+.detailColThree{
+    width: 28%
+}
+
+.detailWidth70{
+    width: 68%;
+}
+
+.contextWidth75{
+    width: 75%;
+}
+
+.leftWidth80{
+    width: 72%;
+}
+
+.rightWidth{
+    width: 28%;
+}
+
+.leftTitle35{
+    width: 38%;
+}
+
+.buttonFontColor{
+    color: white;
+}
+
+
+.alterButton{
+    background-color: #494156 !important;
+    font-size: 20px !important;
+}
+
+.ofh{
+    overflow: hidden;
+}
+
+.bar-unfinished-on {
+    background: url('../res/img/1_25.png') no-repeat center top;
+    background-size: 26px 26px;
+}
+
+.bar-unfinished-off {
+    background: url('../res/img/1_24.png') no-repeat center top;
+    background-size: 26px 26px;
+}
+
+.detailInfo {
+    margin-top: 55%;
+    margin-right: 10%;
+}
+
+.noData {
+    text-align: center;
+    color: #717171;
+    margin-top: 25px;
+}
+
+.ds
+{
+    boder: 1px solid #717171;
+}
+
+
+
+
+

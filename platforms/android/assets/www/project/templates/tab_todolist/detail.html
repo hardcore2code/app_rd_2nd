@@ -1,0 +1,179 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<div class="TodoListDetail">
+  <ion-view hide-tabs>
+    <div>
+    <ion-header-bar class="barmy" align-title="center">
+      <div class="buttons">
+        <i class="icon ion-ios-arrow-back"  ng-click="myGoBack()" title="返回">&nbsp;返回</i>
+      </div>
+      <h1 class="title">审批详情</h1>
+      <div class="buttons">
+        <i class="icon ion-ios-list-outline lookCheckList" ng-click="lookCheckList(im.tpId)" title="查看审批列表信息"></i>
+      </div>
+    </ion-header-bar>
+    </div>
+    <ion-content class="backgroundColor#eeeeee">
+      <div ng-if = "hStatus == 0" class="mgnL10px mgnR10px lk errorAlert">
+        重要提示：由于此计划含有不属于该处理处置单位经营范围内的废物类别，所以不允许审批通过！
+      </div>
+      <div ng-if = "isTrue == '1'">
+        <div class="lk infoDetail mgnL10px mgnR10px mgnT10px ofh">
+          <div >
+            <div class="descFont ftl detailColOne">
+              转移计划编号：
+          </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.tpId}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              产生单位：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.enNameCs}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              运输单位：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.enNameYs}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              处置单位：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.enNameCz}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              座机-分机号：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.linkTel}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              手机：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.linkPhone}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              起止时间：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{im.beginTime}}&nbsp;至&nbsp;{{im.endTime}}
+            </div>
+          </div>
+        </div>
+        <center class="detailSubTitile">转移计划转移废物明细信息</center>
+        <div ng-repeat="item in items" class="infoDetail detailSubLine mgnL10px mgnR10px ofh">
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              废物名称：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.dName}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              形态：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.shape}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              主要成分：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.meterial}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              废物类别：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.bigCategoryName}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              类别名称：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.bigCategoryName}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              废物代码：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.smallCategoryId}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              废物产生说明：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.smallCategoryComment}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              预计量：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.unitNum}}
+            </div>
+          </div>
+          <div class="crl">
+            <div class="descFont ftl detailColOne">
+              单位：
+            </div>
+            <div class="coreFont ftl detailWidth70">
+              {{item.unit}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 30px;">&nbsp;</div>
+      <div ng-if = "isTrue == '0' " class="listIsNull">
+        <!--为空 -->
+        <center><p class = "listIsNull-font">发生系统错误，请稍后再试，带来不便敬请谅解！</p></center>
+      </div>
+    </ion-content>
+    <div class="bar bar-footer pdgB10px backgroundColorWhite" ng-if="$root.checkStatus">
+      <div class="buttonWidth">
+        <button id="bh" class="button buttonBh buttonCss" ng-click="checkInfo(0)">驳回</button>
+      </div>
+      &nbsp;&nbsp;
+      <div ng-if = "hStatus == 1" class="buttonWidth">
+        <button id="tg" class="button button-calm buttonMy buttonCss " ng-click="checkInfo(1)">通过</button>
+      </div>
+      <div ng-if = "hStatus == 0" class="buttonWidth">
+        <button id="tg" class="button button-calm buttonMy buttonCss" ng-click="checkInfo(1)" disabled>通过</button>
+      </div>
+    </div>
+  </ion-view>
+</div>
+

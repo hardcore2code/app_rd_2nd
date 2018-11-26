@@ -1,0 +1,43 @@
+/* Empty. Add your own CSS if you like */
+.tabs-my > .tabs, .tabs.tabs-my {
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #fff;
+}
+.bar-my {
+    border-color: #b2b2b2;
+    background-color: #494156;
+    background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
+    color: #fff;
+}
+
+.tab_default{ 
+    border-bottom:solid 1px #F2F2F2;
+    padding:6px 0;
+}
+.tab_select{
+    border-bottom:solid 1px #3E89F5;
+}
+.arrow-top {
+    position: absolute;
+    width: 0;
+    height: 0; 
+    top:20px; 
+    border: 6px solid #3E89F5;
+    border-right-color:transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+.arrow-top:after {
+    content:'';
+    position:absolute;
+    width: 0;
+    height: 0; 
+    border: 12px solid #fff;
+    right: -12px;
+    bottom: -13px;
+    border-right-color:transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
